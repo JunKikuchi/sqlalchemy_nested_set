@@ -15,10 +15,6 @@ class Base():
     left   = Column('lft', Integer, nullable=False)
     right  = Column('rgt', Integer, nullable=False)
 
-    def __repr__(self):
-        return '<Node(id:%s parent:%s left:%s right: %s)>' %\
-            (self.id, self.parent, self.left, self.right)
-
 def before_insert_listener(mapper, connection, instance):
     table = mapper.mapped_table
     max_right = connection.scalar(

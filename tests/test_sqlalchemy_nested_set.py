@@ -15,6 +15,10 @@ Session = sessionmaker(bind=engine)
 Base = declarative_base()
 class Node(Base, nested_set.Base):
     __tablename__ = 'node'
+
+    def __repr__(self):
+        return '<Node(id:%s parent:%s left:%s right: %s)>' %\
+            (self.id, self.parent, self.left, self.right)
 nested_set.listen(Node)
 
 class NestedSetExtensionTestCase(unittest.TestCase):
